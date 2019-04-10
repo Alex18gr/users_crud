@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>My Form</title>
+    <title>Νέος Χρήστης</title>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<?php echo validation_errors(); ?>
+
 <div class="container">
 
     <div class="row">
@@ -19,22 +19,24 @@
     </div>
     <hr>
 
+    <!--  Message to confirm that the user created successfully  -->
     <?php if (isset($success)) {
-        echo 'User added successfully !!!!!';
-     ?>
 
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        User added successfully!!
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <?php
+        ?>
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo 'Ο χρήστης δημιουργήθηκε επιτυχώς!'; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <?php
     }?>
 
 
     <div class="row">
         <div class="col-lg-8">
+            <!--  The form for adding the user -->
             <?php echo form_open(base_url('home/addNewUser')); ?>
             <div class="form-check">
                 <input name="isActive" type="checkbox" class="form-check-input" id="isActive" value="1">
@@ -53,8 +55,8 @@
                 <input name="password" type="password" class="form-control" id="password" placeholder="Κωδικός">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword2">Επανάληψη κωδικού:</label>
-                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Επανάληψη κωδικού">
+                <label for="passwordConf">Επανάληψη κωδικού:</label>
+                <input type="password" class="form-control" id="passwordConf" name="passwordConf" placeholder="Επανάληψη κωδικού">
             </div>
 
             <div class="form-group">
@@ -63,6 +65,7 @@
             </div>
             <label>Δικαιώματα: </label>
 
+            <!-- All the rolled that have been received from the database are displayed with checkboxes here -->
             <?php foreach ($all_roles_list as $role) {
 
             ?>
@@ -77,8 +80,22 @@
             <?php
             }?>
             <input type="hidden" id="usrId" name="usrId" value="">
-            <button type="submit" class="btn btn-secondary">Ενημέρωση</button>
+            <div class="row"  style="margin-top: 15px;">
+                <button type="submit" class="btn btn-secondary">Ενημέρωση</button>
+                <a href="<?php echo base_url() ?>" class="btn btn-info" role="button" style="margin-left: 8px;">Λίστα Χρηστών</a>
+            </div>
             </form>
+
+            <!--  The validation error displayed here when there are  -->
+            <?php if (validation_errors() != false) {
+
+             ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo validation_errors(); ?>
+            </div>
+            <?php
+            }?>
+
         </div>
 
     </div>
@@ -101,10 +118,7 @@
 //}
 
 ?>
-
-
-
-<script type="text/javascript" src="<?php echo base_url("public/js/bootstrap.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url("public/js/jquery-3.3.1.min.js");?>"></script>
+<script type="text/javascript" src="<?php echo base_url("public/js/bootstrap.js"); ?>"></script>
 </body>
 </html>

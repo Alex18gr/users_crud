@@ -7,19 +7,26 @@
         </div>
     </div>
     <hr>
+    <!--  The table used to view all the user data  -->
     <div class="row">
         <div class="col-lg-10">
             <table id="users" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                 <tr>
+                    <!-- the name of the user-->
                     <th>Όνομα</th>
+                    <!-- Username -->
                     <th>Όνομα Χρήστη</th>
+                    <!-- Roles in text -->
                     <th>Δικαιώματα</th>
+                    <!-- has the value 1 if the user is active-->
                     <th>Ενεργός</th>
+                    <!-- Extra helping column for editing and deleting actions -->
                     <th>Ενέργειες</th>
                 </tr>
                 </thead>
                 <tbody>
+                <!-- Prints the data for all the users at the columns -->
                 <?php
                 foreach($users as $user)
                 {

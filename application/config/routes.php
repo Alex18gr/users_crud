@@ -53,5 +53,8 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/*
+ * These custom routes are used to map the editUser and the deleteUser with path variables
+ * */
 $route['editUser/(:num)'] = 'home/editUser/$1';
 $route['deleteUser/(:num)'] = 'home/deleteUser/$1';

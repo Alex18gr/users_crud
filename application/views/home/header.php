@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo base_url("public/css/bootstrap.css");?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("public/css/datatables.min.css") ?>"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("public/css/dataTables.bootstrap4.css") ?>"/>
-    <title><?php echo $title ?></title>
+    <title>Αρχική Σελίδα</title>
 </head>
 <body>
 <!--<p>This is header</p>-->
