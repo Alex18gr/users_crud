@@ -14,7 +14,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h1>Δημιουργία Χρήστη Διαχειριστικού</h1>
+            <h1>Επεξαργασία Χρήστη Διαχειριστικού</h1>
         </div>
     </div>
     <hr>
@@ -35,31 +35,31 @@
 
     <div class="row">
         <div class="col-lg-8">
-            <?php echo form_open(base_url('home/addNewUser')); ?>
+            <?php echo form_open(base_url('editUser/'.$user_details->id)); ?>
             <div class="form-check">
-                <input name="isActive" type="checkbox" class="form-check-input" id="isActive" value="1">
+                <input name="isActive" type="checkbox" class="form-check-input" id="isActive" value="1" <?php if ($user_details->is_active == 1) {echo 'checked';} ?>>
                 <label class="form-check-label" for="isActive">Ενεργός</label>
             </div>
             <div class="form-group">
                 <label for="fullName">Ονοματεπώνυμο:</label>
-                <input name="fullName" type="text" class="form-control" id="fullName" placeholder="Ονοματεπώνυμο">
+                <input name="fullName" type="text" class="form-control" id="fullName" placeholder="Ονοματεπώνυμο" value="<?php echo $user_details->name?>">
             </div>
             <div class="form-group">
                 <label for="username">Όνομα χρήστη:</label>
-                <input name="username" type="text" class="form-control" id="username" placeholder="Όνομα χρήστη">
+                <input name="username" type="text" class="form-control" id="username" placeholder="Όνομα χρήστη" value="<?php echo $user_details->username ?>">
             </div>
             <div class="form-group">
                 <label for="password">Κωδικός:</label>
-                <input name="password" type="password" class="form-control" id="password" placeholder="Κωδικός">
+                <input name="password" type="password" class="form-control" id="password" placeholder="Κωδικός" value="<?php echo '12345678' ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword2">Επανάληψη κωδικού:</label>
-                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Επανάληψη κωδικού">
+                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Επανάληψη κωδικού" value="<?php echo '12345678' ?>">
             </div>
 
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
+                <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" value="<?php echo $user_details->email ?>">
             </div>
             <label>Δικαιώματα: </label>
 
@@ -69,16 +69,20 @@
 
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" value="<?php echo 'role_'.$role->id ?>" name="<?php echo 'role_'.$role->id ?>">
+                    <input type="checkbox" class="form-check-input" value="<?php echo 'role_'.$role->id ?>" name="<?php echo 'role_'.$role->id ?>"
+                        <?php if (in_array($role->id, $user_details->role_ids)) {echo 'checked';} ?>>
                     <?php echo $role->name ?>
                 </label>
             </div>
 
             <?php
             }?>
-            <input type="hidden" id="usrId" name="usrId" value="">
-            <button type="submit" class="btn btn-secondary">Ενημέρωση</button>
-            </form>
+            <div class="row" style="margin-top: 15px;">
+                <input type="hidden" id="userId" name="userId" value="<?php echo $user_details->id ?>">
+                <button type="submit" class="btn btn-secondary">Ενημέρωση</button>
+                </form>
+            </div>
+
         </div>
 
     </div>
